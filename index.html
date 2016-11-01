@@ -9,27 +9,34 @@
   </head>
   <body>
     <div class="container">
+      <h2 class="well">Frankie's Movie House</h2>
+      <img src="img/airbud.jpg" alt="airbud" class="col-md-4 well">
+      <img src="img/robocop.jpg" alt="robocop" class="col-md-4 well">
+      <img src="img/santas.jpg" alt="santa" class="col-md-4 well">
       <form>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 well" id="movie-info">
             <div class="form-group">
               <label for="title">Movie Title:</label>
               <select id="title" class="form-control">
-                  <option>Blaze of Glory</option>
-                  <option>Santa's Grand Adventure</option>
-                  <option>Air Bud 2</option>
+                  <option value="null">Please select a movie</option>
+                  <option value="blaze">Blaze of Glory</option>
+                  <option value="santa">Santa's Grand Adventure</option>
+                  <option value="bud">Air Bud: Seventh Inning Fetch</option>
               </select>
             </div>
             <div class="form-group">
               <label for="time">Movie Time:</label>
               <select id="time" class="form-control">
-                  <option>Noon</option>
-                  <option>6:00 pm</option>
-                  <option>9:00 pm</option>
+                  <option value="null">Select a time</option>
+                  <option value="12">Noon</option>
+                  <option value="6">6:00 pm</option>
+                  <option value="9">9:00 pm</option>
               </select>
             </div>
+            <button type="button" class="btn" id="movieToCustomer">Next</button>
           </div><!-- Column left -->
-          <div class="col-md-6">
+          <div class="col-md-6 well" id="customer-info">
             <div class="form-group ">
               <label for="name">Please enter your name: </label>
               <input type="text" id="name" class="form-control">
@@ -38,15 +45,25 @@
               <label for="age">Please enter your age: </label>
               <input type="number" id="age" class="form-control" min="1" max="150">
             </div>
+            <button type="submit" class="btn" id="purchase">Purchase Ticket</button>
+            <p class="warning">You are not old enough to see this movie!</p>
           </div>
 
         </div><!-- row 1-->
-        <button type="submit" class="btn" id="purchase">Purchase Ticket</button>
-      </form>
-        <div class="row">
-          <h2>Your ticket</h2>
-          <div id="ticket">
 
+      </form>
+
+        <div class="row">
+          <div id="ticket" class="well">
+            <h2>Your ticket</h2>
+            <p>
+              Movie: <span id="ticket-title"></span><br>
+              Time: <span id="ticket-time"></span><br>
+              Price: <span id="ticket-price"></span><br>
+              Rating: <span id="ticket-rating"></span><br>
+              Customer Name: <span id="ticket-name"></span><br>
+
+            </p>
           </div>
         </div>
 

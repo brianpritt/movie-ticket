@@ -1,0 +1,10 @@
+.warning{
+  color: red;
+  display: inline-block
+}
+#customer-info, #ticket {
+  display: none;
+}
+img{
+  height:500px;
+}
