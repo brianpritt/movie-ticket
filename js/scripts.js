@@ -20,15 +20,6 @@
    this.age = age;
  }
 
-//Prototypes
- Customer.prototype.ofAge = function(){
-   var custAge = true;
-   if (this.age < 18) {
-      custAge = false;
-   }
-  return custAge;
- }
-
 var ticketPrice = function(age, run, time){
   if (age > 64  || age < 8){
     return 5;
@@ -40,28 +31,37 @@ var ticketPrice = function(age, run, time){
     return 12
   }
 };
+
 var movieSelect = function(selection) {
-  if (selection === "blaze") {
-    return nowPlaying[0];
-  }
-  else if (selection === "santa") {
-    return nowPlaying[1];
-  }
-  else if (selection === "bud") {
-    return nowPlaying[2];
-  }
+  return nowPlaying[selection];
 };
 
+var clearForm = function(){
+  $("#title").val("null");
+  $("#time").val("null");
+  $("#name").val("");
+  $("#age").val("");
+}
+
 //Movies
-var blazeMov = new Movie("Blaze of Glory","R", 0);
+var roboMov = new Movie("RoboCop","R", 0);
 var santaMov = new Movie("Santa's Grand Adventure","G",0);
 var budMov = new Movie("Air Bud: Seventh Inning Fetch","G",1);
-var nowPlaying = [blazeMov, santaMov, budMov];
+var nowPlaying = [roboMov, santaMov, budMov];
 
+//Prototypes
+ Customer.prototype.ofAge = function(){
+   var custAge = true;
+   if (this.age < 18) {
+      custAge = false;
+   }
+  return custAge;
+ }
+
+//User Interface
 $(document).ready(function(){
   $(".warning").hide();
   $("#movieToCustomer").click(function() {
-    // $(this.hide();
     $("#customer-info").show();
   });
 
@@ -73,11 +73,10 @@ $(document).ready(function(){
     var timeInput = $("#time").val();
     var nameInput = $("#name").val();
     var ageInput  = parseInt($("#age").val());
-    var movieSelection = movieSelect(titleInput);
-    // console.log(titleInput, timeInput, nameInput,ageInput);
 
+    var movieSelection = movieSelect(titleInput);
     var newCustomer = new Customer(nameInput, ageInput);
-    // console.log(movieSelection.rating, newCustomer.of)
+
     if (movieSelection.rating === "R" && newCustomer.ofAge() === false){
       $(".warning").show();
     }else{
@@ -90,15 +89,18 @@ $(document).ready(function(){
       $("#ticket #ticket-price").append(newTicket.price);
       $("#ticket #ticket-name").append(newTicket.name);
       $("#ticket").show();
-    };
-      $("#title").val("null");
-      $("#time").val("null");
-      $("#name").val("");
-      $("#age").val("");
 
+      $("#confirmation .btn").click(function(){
+        $(".confirmation, #movie-info, #customer-info, img").hide();
+
+      });
+    };//end else
+
+      clearForm();
       console.log(newCustomer);
 
 
 
-  });
-});
+  });//end form submit
+
+});//end document.ready

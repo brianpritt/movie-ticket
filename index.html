@@ -10,9 +10,9 @@
   <body>
     <div class="container">
       <h2 class="well">Frankie's Movie House</h2>
-      <img src="img/airbud.jpg" alt="airbud" class="col-md-4 well">
       <img src="img/robocop.jpg" alt="robocop" class="col-md-4 well">
       <img src="img/santas.jpg" alt="santa" class="col-md-4 well">
+      <img src="img/airbud.jpg" alt="airbud" class="col-md-4 well">
       <form>
         <div class="row">
           <div class="col-md-6 well" id="movie-info">
@@ -20,9 +20,9 @@
               <label for="title">Movie Title:</label>
               <select id="title" class="form-control">
                   <option value="null">Please select a movie</option>
-                  <option value="blaze">Blaze of Glory</option>
-                  <option value="santa">Santa's Grand Adventure</option>
-                  <option value="bud">Air Bud: Seventh Inning Fetch</option>
+                  <option value=0>RoboCop</option>
+                  <option value=1>Santa's Grand Adventure</option>
+                  <option value=2>Air Bud: Seventh Inning Fetch</option>
               </select>
             </div>
             <div class="form-group">
@@ -45,7 +45,7 @@
               <label for="age">Please enter your age: </label>
               <input type="number" id="age" class="form-control" min="1" max="150">
             </div>
-            <button type="submit" class="btn" id="purchase">Purchase Ticket</button>
+            <button type="submit" class="btn" id="purchase">Show Price</button>
             <p class="warning">You are not old enough to see this movie!</p>
           </div>
 
@@ -53,18 +53,18 @@
 
       </form>
 
-        <div class="row">
+        <div class="row" id="confirmation">
           <div id="ticket" class="well">
-            <h2>Your ticket</h2>
+            <h2 class="confirmation"><span id="ticket-name"></span>, Please confirm the following:</h2>
             <p>
               Movie: <span id="ticket-title"></span><br>
               Time: <span id="ticket-time"></span><br>
-              Price: <span id="ticket-price"></span><br>
+              Price: $<span id="ticket-price"></span><br>
               Rating: <span id="ticket-rating"></span><br>
-              Customer Name: <span id="ticket-name"></span><br>
-
             </p>
+            <button type="button" name="button" class="btn confirmation">Confirm</button>
           </div>
+
         </div>
 
     </div> <!--container -->
